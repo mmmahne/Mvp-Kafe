@@ -117,6 +117,54 @@ export default function QRScan() {
         </Button>
       )}
 
+      {/* Referral Section */}
+      <Card className="w-full max-w-md mx-auto mt-8 shadow-sm">
+        <CardHeader>
+          <CardTitle className="text-xl font-bold">Program Referral</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="bg-gray-50 p-4 rounded-lg">
+            <h3 className="font-semibold mb-2">Kode Referral Anda</h3>
+            <div className="flex items-center gap-2">
+              <Input value="JOHN123" readOnly className="bg-white font-mono" />
+              <Button variant="outline" onClick={() => navigator.clipboard.writeText("JOHN123")}>
+                Salin
+              </Button>
+            </div>
+          </div>
+          
+          <div className="space-y-2">
+            <h3 className="font-semibold">Cara Kerja</h3>
+            <div className="grid gap-3">
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center flex-shrink-0">1</div>
+                <p className="text-sm">Bagikan kode referral Anda kepada teman</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center flex-shrink-0">2</div>
+                <p className="text-sm">Teman Anda mendaftar menggunakan kode referral</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center flex-shrink-0">3</div>
+                <p className="text-sm">Anda dan teman mendapatkan bonus 50 points</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gray-50 p-4 rounded-lg">
+            <h3 className="font-semibold mb-2">Status Referral</h3>
+            <div className="flex justify-between items-center">
+              <span className="text-sm text-gray-600">Total Referral</span>
+              <span className="font-semibold">3 Orang</span>
+            </div>
+            <div className="flex justify-between items-center mt-1">
+              <span className="text-sm text-gray-600">Points Diperoleh</span>
+              <span className="font-semibold">150 Points</span>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
       <Card className="w-full max-w-md mx-auto mt-8 shadow-sm">
         <CardHeader>
           <CardTitle className="text-xl font-bold">Your Vouchers</CardTitle>

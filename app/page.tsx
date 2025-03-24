@@ -13,13 +13,14 @@ export default function Home() {
       {/* Hero Section dengan Promo */}
       <div className="relative h-[70vh] bg-black">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2">
-            <div className="relative w-[350px] h-[350px] md:w-[450px] md:h-[450px]">
+          <div className="absolute inset-0 flex items-end justify-center">
+            <div className="relative w-full h-[80%] sm:w-[350px] sm:h-[350px] md:w-[450px] md:h-[450px]">
               <Image
                 src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd"
                 alt="Cafe Delights Special Drinks"
                 fill
-                className="object-cover"
+                className="object-cover object-center"
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 350px, 450px"
                 priority
               />
             </div>
@@ -31,14 +32,16 @@ export default function Home() {
             <h1 className="text-4xl md:text-5xl font-bold mb-4">SPECIAL DISCOUNT</h1>
             <div className="text-7xl md:text-8xl font-black mb-2">25%</div>
             <p className="text-sm mb-4">*Minimal Pembelian Rp 100.000</p>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-2 border-white text-white hover:bg-white hover:text-black bg-black/50 backdrop-blur-sm"
-            >
-              <QrCode className="mr-2 h-5 w-5" />
-              Scan QR Sekarang
-            </Button>
+            <Link href="/qr-scan">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-2 border-white text-white hover:bg-white hover:text-black bg-black/50 backdrop-blur-sm"
+              >
+                <QrCode className="mr-2 h-5 w-5" />
+                Scan QR Sekarang
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
@@ -94,9 +97,11 @@ export default function Home() {
                   <p className="text-sm text-gray-600">Ajak teman dapat bonus</p>
                 </div>
               </div>
-              <Button variant="outline" size="sm" className="border-2">
-                Mulai
-              </Button>
+              <Link href="/qr-scan">
+                <Button variant="outline" size="sm" className="border-2">
+                  Mulai
+                </Button>
+              </Link>
             </div>
           </Card>
 
@@ -109,9 +114,11 @@ export default function Home() {
                   <p className="text-sm text-gray-600">Kumpulkan 500 poin</p>
                 </div>
               </div>
-              <Button variant="outline" size="sm" className="border-2">
-                Tukar
-              </Button>
+              <Link href="/qr-scan">
+                <Button variant="outline" size="sm" className="border-2">
+                  Tukar
+                </Button>
+              </Link>
             </div>
           </Card>
         </div>
@@ -150,7 +157,7 @@ export default function Home() {
                     src={item.image}
                     alt={item.name}
                     fill
-                    className="object-cover grayscale"
+                    className="object-cover"
                   />
                 </div>
                 <div className="p-3">
