@@ -299,28 +299,30 @@ export default function Menu() {
             animate={{ opacity: 1, height: "auto" }}
             transition={{ duration: 0.2 }}
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <Button variant="ghost" size="icon" className="md:hidden">
                 <ArrowLeft className="h-5 w-5" />
               </Button>
-              <div className="w-10 h-10 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
-                <Image
-                  src="https://images.unsplash.com/photo-1518057111178-44a106bad636?w=100&h=100&fit=crop&crop=faces"
-                  alt="Cafe Delights Logo"
-                  width={40}
-                  height={40}
-                  className="object-cover"
-                />
-              </div>
-              <div>
-                <h1 className="text-lg font-bold">Cafe Delights</h1>
-                <p className="text-xs text-gray-500">Indonesian Cuisine</p>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
+                  <Image
+                    src="https://images.unsplash.com/photo-1518057111178-44a106bad636?w=100&h=100&fit=crop&crop=faces"
+                    alt="Cafe Delights Logo"
+                    width={32}
+                    height={32}
+                    className="object-cover"
+                  />
+                </div>
+                <div className="min-w-0">
+                  <h1 className="text-base font-bold truncate">Cafe Delights</h1>
+                  <p className="text-xs text-gray-500 truncate">Indonesian Cuisine</p>
+                </div>
               </div>
             </div>
             <div className="flex items-center gap-2">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="outline" size="sm" className="gap-2">
+                  <Button variant="outline" size="sm" className="hidden md:flex gap-2">
                     <Users className="h-4 w-4" />
                     Group Order
                     <ChevronDown className="h-4 w-4" />
@@ -349,8 +351,8 @@ export default function Menu() {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
               <Input
                 type="search"
-                placeholder="Search menu..."
-                className="pl-10 pr-10 rounded-full bg-gray-100 border-none"
+                placeholder="Cari menu..."
+                className="pl-10 pr-4 h-10 rounded-full bg-gray-100 border-none text-sm"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -358,7 +360,7 @@ export default function Menu() {
             <Button
               variant="ghost"
               size="icon"
-              className="relative"
+              className="relative flex-shrink-0"
               onClick={() => {
                 /* Handle cart click */
               }}
@@ -374,23 +376,25 @@ export default function Menu() {
 
           {/* Category Tabs */}
           <motion.div
-            className="px-4 pb-4 overflow-x-auto flex gap-2 scrollbar-hide"
+            className="px-4 pb-4 -mx-1"
             initial={{ y: 0 }}
             animate={{ y: isScrolled ? 0 : 0 }}
             transition={{ duration: 0.3 }}
           >
-            {Object.keys(menuItems).map((category) => (
-              <Button
-                key={category}
-                variant={activeCategory === category ? "default" : "outline"}
-                className={`whitespace-nowrap ${
-                  activeCategory === category ? "bg-black text-white hover:bg-gray-800" : "text-black hover:bg-gray-100"
-                }`}
-                onClick={() => setActiveCategory(category)}
-              >
-                {category.charAt(0).toUpperCase() + category.slice(1)}
-              </Button>
-            ))}
+            <div className="flex overflow-x-auto scrollbar-hide gap-2 pb-1">
+              {Object.keys(menuItems).map((category) => (
+                <Button
+                  key={category}
+                  variant={activeCategory === category ? "default" : "outline"}
+                  className={`whitespace-nowrap px-4 py-2 text-sm ${
+                    activeCategory === category ? "bg-black text-white hover:bg-gray-800" : "text-black hover:bg-gray-100"
+                  }`}
+                  onClick={() => setActiveCategory(category)}
+                >
+                  {category.charAt(0).toUpperCase() + category.slice(1)}
+                </Button>
+              ))}
+            </div>
           </motion.div>
         </div>
       </motion.header>
